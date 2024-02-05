@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_toast_bar/flutter_toast_bar.dart';
+import 'package:simplecalculator/operations.dart';
 
 import 'floatingactionbutton.dart';
 
@@ -39,36 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
   double value = 0;
   TextEditingController txtNumber1 = TextEditingController();
   TextEditingController txtNumber2 = TextEditingController();
+  Operation operation = Operation();
 
-  void calculate(String math) {
-    switch(math){
-      case 'add':
-        FlutterToastBar.showToast(
-            context: context,
-            message: "${double.parse(txtNumber1.text) + double.parse(txtNumber2.text)}");
-        break;
-      case 'subtract':
-        FlutterToastBar.showToast(
-            context: context,
-            message: "${double.parse(txtNumber1.text) - double.parse(txtNumber2.text)}");
-        break;
-      case 'multiply':
-        FlutterToastBar.showToast(
-            context: context,
-            message: "${double.parse(txtNumber1.text) * double.parse(txtNumber2.text)}");
-        break;
-      case 'divide':
-        FlutterToastBar.showToast(
-            context: context,
-            message: "${double.parse(txtNumber1.text) / double.parse(txtNumber2.text)}");
-        break;
-      default:
-        FlutterToastBar.showToast(
-            context: context,
-            message: "Please select an operation first!");
-    }
-
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       setState(() {
                         math="add";
                       });
-                      calculate(math);
+                      operation.calculate(context,math,double.parse(txtNumber1.text),double.parse(txtNumber2.text));
                     },
                     icon: const Icon(Icons.add),)
               ),
@@ -147,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       setState(() {
                         math="subtract";
                       });
-                      calculate(math);
+                      operation.calculate(context,math,double.parse(txtNumber1.text),double.parse(txtNumber2.text));
                     },
                     icon: const Icon(Icons.remove),)
               ),
@@ -160,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       setState(() {
                         math="multiply";
                       });
-                      calculate(math);
+                      operation.calculate(context,math,double.parse(txtNumber1.text),double.parse(txtNumber2.text));
                     },
                     icon: const Icon(CupertinoIcons.multiply),)
               ),
@@ -172,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       setState(() {
                         math="divide";
                       });
-                      calculate(math);
+                      operation.calculate(context,math,double.parse(txtNumber1.text),double.parse(txtNumber2.text));
                     },
                     tooltip: 'Division',
                     child:  const Icon(CupertinoIcons.divide),
