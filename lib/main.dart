@@ -17,12 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Simple Calculator',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Simple Calculator'),
     );
   }
 }
@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 50),
+                padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 100),
                 child:  TextField(
                   controller: txtNumber1,
                   inputFormatters: <TextInputFormatter>[
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 50),
+                padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 100),
                 child:  TextField(
                   controller: txtNumber2,
                   keyboardType: TextInputType.number,
